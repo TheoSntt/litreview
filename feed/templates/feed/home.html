@@ -1,3 +1,9 @@
 {% extends 'base.html' %}
+
 {% block content %}
-{% endblock content %}
+<ul>
+{% for ticket in tickets %}
+<li>{{ ticket.title }}- <a href="{% url 'update-ticket' ticket.id %}">[modifier]</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

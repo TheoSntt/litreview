@@ -7,9 +7,11 @@
 
         {% block content %}{% endblock content %}
 
-        {% if user.is_authenticated %}
-            <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
-            <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
-        {% endif %}
+        <ul>
+            <li><a href="{% url 'password_change' %}">Changer le mot de passe</a></li>
+            <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+            <li><a href="{% url 'create-ticket' %}">Créer un ticket</a></li>
+        </ul>
+
     </body>
 </html>

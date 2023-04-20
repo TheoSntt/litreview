@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-
+from tickets.models import Ticket
 from tickets.forms import TicketForm
 
 @login_required
@@ -20,3 +20,21 @@ def create_ticket(request):
     return render(request,
                   'tickets/create_ticket.html',
                   {'form': form})
+
+
+@login_required
+def update_ticket(request, id):
+    ticket = Ticket.objects.get(id=id)
+    if request.method == 'POST':
+        form = TicketForm(request.POST, instance=ticket)
+        if form.is_valid():
+            # mettre à jour le groupe existant dans la base de données
+            form.save()
+            # rediriger vers la page détaillée du groupe que nous venons de mettre à jour
+            return redirect('home')
+    else:
+        form = TicketForm(instance=ticket)
+
+    return render(request,
+                'tickets/update_ticket.html',
+                {'form': form})
