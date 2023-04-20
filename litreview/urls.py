@@ -19,6 +19,7 @@ from django.urls import path
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView)
 import authentication.views
+import feed.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,4 +37,5 @@ urlpatterns = [
          name='password_change_done'
          ),
     path('signup/', authentication.views.signup_page, name='signup'),
+    path('home/', feed.views.home, name='home'),
 ]

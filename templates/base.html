@@ -1,9 +1,13 @@
 <html>
     <head>
-        <title>FotoBlog</title>
+        <title>LITReview</title>
     </head>
     <body>
-            {% block content %}{% endblock content %}
-        </div>
+        <h1>LITReview</h1>
+            {% if user.is_authenticated %}
+                <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
+                <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+            {% endif %}
+        {% block content %}{% endblock content %}
     </body>
 </html>
