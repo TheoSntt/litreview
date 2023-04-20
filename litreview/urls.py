@@ -20,6 +20,7 @@ from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView)
 import authentication.views
 import feed.views
+import tickets.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,4 +39,5 @@ urlpatterns = [
          ),
     path('signup/', authentication.views.signup_page, name='signup'),
     path('home/', feed.views.home, name='home'),
+    path('tickets/create/', tickets.views.create_ticket, name='create_ticket'),
 ]
