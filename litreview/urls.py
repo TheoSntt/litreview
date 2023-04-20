@@ -21,6 +21,8 @@ from django.contrib.auth.views import (
 import authentication.views
 import feed.views
 import tickets.views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -42,3 +44,7 @@ urlpatterns = [
     path('tickets/create/', tickets.views.create_ticket, name='create-ticket'),
     path('tickets/<int:id>/update/', tickets.views.update_ticket, name='update-ticket'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

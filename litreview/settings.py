@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr-fr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
@@ -134,3 +134,7 @@ AUTH_USER_MODEL = 'authentication.User'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = LOGIN_URL
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.joinpath('media/')

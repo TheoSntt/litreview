@@ -3,7 +3,8 @@
 {% block content %}
 <ul>
 {% for ticket in tickets %}
-<li>{{ ticket.title }}- <a href="{% url 'update-ticket' ticket.id %}">[modifier]</a></li>
+<li>{{ ticket.title }} - <a href="{% url 'update-ticket' ticket.id %}">[modifier]</a></li>
+<img src={{ ticket.image.url }}>
 {% endfor %}
 </ul>
 {% endblock %}
