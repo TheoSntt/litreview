@@ -5,6 +5,7 @@ from tickets.forms import TicketForm
 
 @login_required
 def create_ticket(request):
+    form = TicketForm()
     if request.method == 'POST':
         form = TicketForm(request.POST, request.FILES)
         if form.is_valid():
@@ -15,13 +16,12 @@ def create_ticket(request):
             # redirige vers la page de détail du groupe que nous venons de créer
             # nous pouvons fournir les arguments du motif url comme arguments à la fonction de redirection
             return redirect('home')
-
-    else:
-        form = TicketForm()
-    
+ 
     return render(request,
                   'tickets/create_ticket.html',
                   {'form': form})
+
+
 
 
 @login_required
