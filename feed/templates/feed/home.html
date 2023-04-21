@@ -4,7 +4,7 @@
 <ul>
 {% for ticket in tickets %}
 <li>{{ ticket.title }} - <a href="{% url 'update-ticket' ticket.id %}">[modifier]</a></li>
-<img src={{ ticket.image.url }}>
+{% comment %} <img src={{ ticket.image.url }}> {% endcomment %}
 {% endfor %}
 </ul>
 {% endblock %}
