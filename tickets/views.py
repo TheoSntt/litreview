@@ -15,7 +15,7 @@ def create_ticket(request):
             ticket.save()
             # redirige vers la page de détail du groupe que nous venons de créer
             # nous pouvons fournir les arguments du motif url comme arguments à la fonction de redirection
-            return redirect('home')
+            return redirect('feed')
  
     return render(request,
                   'tickets/create_ticket.html',
@@ -36,14 +36,14 @@ def update_ticket(request, id):
                 # mettre à jour le groupe existant dans la base de données
                 edit_form.save()
                 # rediriger vers la page détaillée du groupe que nous venons de mettre à jour
-                return redirect('home')
+                return redirect('feed')
         if 'delete_ticket' in request.POST:
             delete_form = DeleteTicketForm(request.POST)
             if delete_form.is_valid():
                 # mettre à jour le groupe existant dans la base de données
                 ticket.delete()
                 # rediriger vers la page détaillée du groupe que nous venons de mettre à jour
-                return redirect('home')
+                return redirect('feed')
         
     context = {
         'edit_form': edit_form,

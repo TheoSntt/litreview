@@ -41,7 +41,7 @@ urlpatterns = [
          name='password_change_done'
          ),
     path('signup/', authentication.views.signup_page, name='signup'),
-    path('home/', feed.views.home, name='home'),
+    path('feed/', feed.views.feed, name='feed'),
     path('tickets/create/', tickets.views.create_ticket, name='create-ticket'),
     path('tickets/<int:id>/update/', tickets.views.update_ticket, name='update-ticket'),
     path('follow-users/', follows.views.follow_users, name='follow-users'),

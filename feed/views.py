@@ -5,7 +5,7 @@ from tickets.models import Ticket
 
 
 @login_required
-def home(request):
+def feed(request):
     tickets = Ticket.objects.all()
-    return render(request, 'feed/home.html',
+    return render(request, 'feed/feed.html',
     {'tickets': tickets})
