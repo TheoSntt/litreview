@@ -21,6 +21,7 @@ from django.contrib.auth.views import (
 import authentication.views
 import feed.views
 import tickets.views
+import follows.views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -43,6 +44,9 @@ urlpatterns = [
     path('home/', feed.views.home, name='home'),
     path('tickets/create/', tickets.views.create_ticket, name='create-ticket'),
     path('tickets/<int:id>/update/', tickets.views.update_ticket, name='update-ticket'),
+    path('follow-users/', follows.views.follow_users, name='follow-users'),
+    # path('unfollow-user/', follows.views.unfollow_user, name='unfollow-user'),
+    path('follow-users/<int:id>/unfollow/', follows.views.unfollow_user, name='unfollow-user'),
 ]
 
 if settings.DEBUG:

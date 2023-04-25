@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Suivre un utilisateur</h1>
+<form method="POST">
+  {% csrf_token %}
+  <select name="user_id">
+    {% for user_to_follow in users_to_follow %}
+      <option value="{{ user_to_follow.id }}">{{ user_to_follow.username }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Suivre</button>
+</form>
+<h1>Utilisateurs suivis</h1>
+<ul>
+  {% for followed_user in followed_users %}
+    <li>
+        {{ followed_user.username }}
+        - <a href="{% url 'unfollow-user' followed_user.id %}">[unfollow]</a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}
