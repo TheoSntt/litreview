@@ -18,6 +18,7 @@ def follow_users(request):
     context = {
         'users_to_follow' : users_to_follow,
         'followed_users': followed_users,
+        'followers': request.user.followers.all()
     }
     return render(request, 'follows/follow_users.html', context=context)
 

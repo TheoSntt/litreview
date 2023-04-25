@@ -10,12 +10,22 @@
   </select>
   <button type="submit">Suivre</button>
 </form>
+
 <h1>Utilisateurs suivis</h1>
 <ul>
   {% for followed_user in followed_users %}
     <li>
         {{ followed_user.username }}
         - <a href="{% url 'unfollow-user' followed_user.id %}">[unfollow]</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<h1>Followers </h1>
+<ul>
+  {% for follower in followers %}
+    <li>
+        {{ follower.username }}
     </li>
   {% endfor %}
 </ul>

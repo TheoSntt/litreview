@@ -7,6 +7,7 @@ class User(AbstractUser):
         'self',
         symmetrical=False,
         verbose_name='suit',
+        related_name='followers',
         through='follows.UserFollows'
     )
 
