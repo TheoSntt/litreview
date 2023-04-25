@@ -1,8 +1,6 @@
 {% load feed_extras %}
 <div class="ticket">
         <h4>Ticket : {{ ticket.title }}</h4>
-        - <a href="{% url 'update-ticket' instance.id %}">[modifier]</a>
-        - <a href="{% url 'create-review' instance.id %}">[Proposer une critique]</a>
         {% if ticket.image %}
             <img src={{ ticket.image.url }}>
         {% endif %}
