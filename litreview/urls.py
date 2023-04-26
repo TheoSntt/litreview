@@ -42,13 +42,17 @@ urlpatterns = [
          name='password_change_done'
          ),
     path('signup/', authentication.views.signup_page, name='signup'),
+
     path('feed/', feed.views.feed, name='feed'),
+
     path('tickets/create/', tickets.views.create_ticket, name='create-ticket'),
     path('tickets/<int:id>/update/', tickets.views.update_ticket, name='update-ticket'),
     path('tickets/<int:ticket_id>/review/', reviews.views.create_review, name='create-review'),
+
     path('follow-users/', follows.views.follow_users, name='follow-users'),
-    # path('unfollow-user/', follows.views.unfollow_user, name='unfollow-user'),
     path('follow-users/<int:id>/unfollow/', follows.views.unfollow_user, name='unfollow-user'),
+
+    path('reviews/<int:review_id>/update/', reviews.views.update_review, name='update-review'),
 ]
 
 if settings.DEBUG:
