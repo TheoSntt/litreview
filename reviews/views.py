@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from tickets.models import Ticket
 from reviews.models import Review
 from reviews.forms import ReviewForm, DeleteReviewForm
+from tickets.forms import TicketForm
 
 @login_required
 def create_review(request, ticket_id):
@@ -51,3 +52,26 @@ def update_review(request, review_id):
         }     
 
     return render(request,'reviews/update_review.html', context=context)
+
+
+@login_required
+def create_review_and_ticket(request):
+    review_form = ReviewForm()
+    ticket_form = TicketForm()
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+        ticket_form = TicketForm(request.POST, request.FILES)
+        if all([review_form.is_valid(), ticket_form.is_valid()]):
+            ticket = ticket_form.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
+            review = review_form.save(commit=False)
+            review.user = request.user
+            review.ticket = ticket
+            review.save()
+            return redirect('feed')
+    context = {
+        'review_form': review_form,
+        'ticket_form': ticket_form,
+    }
+    return render(request, 'reviews/create_review_and_ticket.html', context=context)

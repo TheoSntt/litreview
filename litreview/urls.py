@@ -53,6 +53,7 @@ urlpatterns = [
     path('follow-users/<int:id>/unfollow/', follows.views.unfollow_user, name='unfollow-user'),
 
     path('reviews/<int:review_id>/update/', reviews.views.update_review, name='update-review'),
+    path('reviews/create/', reviews.views.create_review_and_ticket, name='create-review-ticket'),
 ]
 
 if settings.DEBUG:

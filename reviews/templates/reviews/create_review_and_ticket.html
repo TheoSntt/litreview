@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Ecrire un ticket et une critique</h1>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ ticket_form.as_p }}
+  {{ review_form.as_p }}
+  <input type="submit" value="Publier">
+</form>
+{% endblock content %}
