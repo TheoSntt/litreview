@@ -8,6 +8,11 @@ from django.http import HttpResponseForbidden
 
 @login_required
 def create_review(request, ticket_id):
+    # Restricting access to the view if the ticket has already been reviewed
+    ticket = Ticket.objects.get(id=ticket_id)
+    if ticket.has_been_reviewed():
+        return HttpResponseForbidden()
+    
     form = ReviewForm()
     if request.method == 'POST':
         form = ReviewForm(request.POST)
@@ -15,7 +20,7 @@ def create_review(request, ticket_id):
             # créer une nouvelle « Band » et la sauvegarder dans la db
             review = form.save(commit=False)
             review.user = request.user
-            review.ticket = Ticket.objects.get(id=ticket_id)
+            review.ticket = ticket
             review.save()
             # redirige vers la page de détail du groupe que nous venons de créer
             # nous pouvons fournir les arguments du motif url comme arguments à la fonction de redirection
