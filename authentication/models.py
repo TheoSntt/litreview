@@ -4,6 +4,7 @@ from feed.models import FeedManager
 
 class User(AbstractUser):
     username = models.CharField(max_length=150, unique=True)
+    feed_manager = FeedManager()
     follows = models.ManyToManyField(
         'self',
         symmetrical=False,
@@ -15,10 +16,5 @@ class User(AbstractUser):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
 
-    feed_manager = FeedManager()
-
-    def get_viewable_reviews(self):
-        return self.feed_manager.get_viewable_reviews(self)
-
-    def get_viewable_tickets(self):
-        return self.feed_manager.get_viewable_tickets(self)
+    def get_feed(self):
+        return User.feed_manager.get_user_feed(self)
