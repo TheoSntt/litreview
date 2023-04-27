@@ -33,5 +33,15 @@ class FeedManager(models.Manager):
         )
         return tickets_and_reviews
     
+    def get_users_posts(self, user):
+        tickets = user.tickets.all()
+        reviews = user.reviews.all()
+        tickets_and_reviews = sorted(
+            chain(tickets, reviews),
+            key=lambda instance: instance.time_created,
+            reverse=True
+        )
+        return tickets_and_reviews
+    
     def get_by_natural_key(self, username):
         return self.model.objects.get_by_natural_key(username)

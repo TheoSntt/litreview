@@ -25,3 +25,22 @@ def feed(request):
     }
 
     return render(request, 'feed/feed.html', context=context)
+
+@login_required
+def users_posts_feed(request):
+    # tickets = Ticket.objects.all()
+    # reviews= Review.objects.all()
+    # tickets_and_reviews = sorted(
+    #     chain(tickets, reviews),
+    #     key=lambda instance: instance.time_created,
+    #     reverse=True
+    # )
+
+    tickets_and_reviews = request.user.get_own_posts_feed()
+    logged_user = request.user
+    context={
+        'tickets_and_reviews':tickets_and_reviews,
+        'logged_user':logged_user
+    }
+
+    return render(request, 'feed/users_posts_feed.html', context=context)

@@ -44,6 +44,7 @@ urlpatterns = [
     path('signup/', authentication.views.signup_page, name='signup'),
 
     path('feed/', feed.views.feed, name='feed'),
+    path('self-feed/', feed.views.users_posts_feed, name='self-feed'),
 
     path('tickets/create/', tickets.views.create_ticket, name='create-ticket'),
     path('tickets/<int:id>/update/', tickets.views.update_ticket, name='update-ticket'),
