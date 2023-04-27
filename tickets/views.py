@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from tickets.models import Ticket
 from tickets.forms import TicketForm, DeleteTicketForm
+from django.http import HttpResponseForbidden
 
 @login_required
 def create_ticket(request):
@@ -27,6 +28,9 @@ def create_ticket(request):
 @login_required
 def update_ticket(request, id):
     ticket = Ticket.objects.get(id=id)
+    # Restricting access to the view to the owner of the ticket
+    if request.user != ticket.user:
+        return HttpResponseForbidden()
     edit_form = TicketForm(instance=ticket)
     delete_form = DeleteTicketForm()
     if request.method == 'POST':

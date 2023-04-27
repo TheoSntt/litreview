@@ -1,8 +1,12 @@
 {% load feed_extras %}
 <div class="ticket">
         <h4>Ticket : {{ ticket.title }}</h4>
-        - <a href="{% url 'update-ticket' instance.id %}">[modifier]</a>
-        - <a href="{% url 'create-review' instance.id %}">[Proposer une critique]</a><br>
+        {% if ticket.user == logged_user %}
+            - <a href="{% url 'update-ticket' instance.id %}">[modifier]</a>
+        {% endif %}
+        {% if not ticket.has_been_reviewed %}
+            - <a href="{% url 'create-review' instance.id %}">[Proposer une critique]</a><br>
+        {% endif %}
         {% if ticket.image %}
             <img src={{ ticket.image.url }}>
         {% endif %}

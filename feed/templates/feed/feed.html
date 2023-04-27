@@ -13,7 +13,7 @@
     <img src={{ ticket.image.url }}>
 {% endif %} {% endcomment %}
     {% if instance|model_type == 'Ticket' %}
-        {% include 'tickets/partials/ticket_snippet.html' with ticket=instance %}
+        {% include 'tickets/partials/ticket_snippet.html' with ticket=instance logged_user=logged_user %}
         {% comment %} <li>
             {{ instance.title }}
              - <a href="{% url 'update-ticket' instance.id %}">[modifier]</a>
@@ -26,7 +26,7 @@
         {% comment %} <li>
             {{ instance.headline }} - {{ instance.rating }} - {{ instance.body }}
         </li> {% endcomment %}
-        {% include 'reviews/partials/review_snippet.html' with review=instance %}
+        {% include 'reviews/partials/review_snippet.html' with review=instance logged_user=logged_user%}
     {% endif %}
 
 {% endfor %}

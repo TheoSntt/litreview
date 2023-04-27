@@ -18,6 +18,10 @@ def feed(request):
     # )
 
     tickets_and_reviews = request.user.get_feed()
+    logged_user = request.user
+    context={
+        'tickets_and_reviews':tickets_and_reviews,
+        'logged_user':logged_user
+    }
 
-    return render(request, 'feed/feed.html',
-    {'tickets_and_reviews': tickets_and_reviews})
+    return render(request, 'feed/feed.html', context=context)

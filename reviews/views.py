@@ -4,6 +4,7 @@ from tickets.models import Ticket
 from reviews.models import Review
 from reviews.forms import ReviewForm, DeleteReviewForm
 from tickets.forms import TicketForm
+from django.http import HttpResponseForbidden
 
 @login_required
 def create_review(request, ticket_id):
@@ -28,6 +29,11 @@ def create_review(request, ticket_id):
 @login_required
 def update_review(request, review_id):
     review = Review.objects.get(id=review_id)
+    
+    # Restricting access to the view to the owner of the review
+    if request.user != review.user:
+        return HttpResponseForbidden()
+    
     edit_form = ReviewForm(instance=review)
     delete_form = DeleteReviewForm()
     if request.method == 'POST':

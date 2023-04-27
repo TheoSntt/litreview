@@ -2,7 +2,9 @@
 <div class="review">
 
     <h4>Review : {{ review.headline }}
-    - <a href="{% url 'update-review' review.id %}">[modifier]</a></h4>
+    {% if review.user == logged_user %}
+        - <a href="{% url 'update-review' review.id %}">[modifier]</a></h4>
+    {% endif %}
     <p><strong>Ecrite par {{ review.user }}</strong></p>
     <p>{{ review.time_created|get_posted_at_display }}</p> 
     <p>Note de {{ review.rating }}</p>
