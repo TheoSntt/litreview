@@ -4,5 +4,6 @@
         {% if ticket.image %}
             <img src={{ ticket.image.url }}>
         {% endif %}
+        <p><strong>Demandé par {{ ticket.user }}</strong></p>
         <p>{{ ticket.time_created|get_posted_at_display }}</p>
 </div>
