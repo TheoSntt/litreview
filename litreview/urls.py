@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView)
+from authentication.forms import CustomLoginForm
 import authentication.views
 import feed.views
 import tickets.views
@@ -30,7 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LoginView.as_view(
         template_name='authentication/login.html',
-        redirect_authenticated_user=True),
+        redirect_authenticated_user=True,
+        authentication_form=CustomLoginForm),
          name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('change-password/', PasswordChangeView.as_view(

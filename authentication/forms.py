@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
 
 class SignupForm(UserCreationForm):
@@ -11,3 +13,8 @@ class SignupForm(UserCreationForm):
         # fields = ('username',)
 
 
+class CustomLoginForm(AuthenticationForm):
+    username = forms.CharField(
+        label="Nom d'utilisateur",
+        widget=forms.TextInput(attrs={'autofocus': True})
+    )

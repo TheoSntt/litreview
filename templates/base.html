@@ -20,18 +20,20 @@
                 </a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                   <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'feed' %}">Flux</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'self-feed' %}">Posts</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'follow-users' %}">Abonnement</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
-                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'feed' %}">Flux</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'self-feed' %}">Posts</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'follow-users' %}">Abonnement</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
+                        </li>
+                    {% endif %}
                   </ul>
                 </div>
               </div>
