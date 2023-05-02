@@ -1,5 +1,5 @@
 {% load feed_extras %}
-<div class="review">
+{% comment %} <div class="review">
 
     <h4>Review : {{ review.headline }}
     {% if review.user == logged_user %}
@@ -11,4 +11,24 @@
     <p>{{ review.body }}</p>
     {% include 'tickets/partials/embeded_ticket_snippet.html' with ticket=review.ticket %}
     
+</div> {% endcomment %}
+
+<div class="container">
+    <div class="card text-center my-5">
+        <div class="card-header">
+            Critique de {{ review.user }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ review.headline }}</h5>
+            <p class="card-text">{{ review.body }}</p>
+            <p class="card-text">Note de {{ review.rating }}</p>
+            {% include 'tickets/partials/embeded_ticket_snippet.html' with ticket=review.ticket %}
+            {% if review.user == logged_user %}
+                <a href="{% url 'update-review' review.id %}" class="btn btn-primary">Modifier</a></h4>
+            {% endif %}
+        </div>
+        <div class="card-footer text-muted">
+            {{ review.time_created|get_posted_at_display }}
+        </div>
+    </div>
 </div>
