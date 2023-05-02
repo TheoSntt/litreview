@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'follows',
     'reviews',
     'tickets',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'crispy_forms.context_processors.crispy_forms',
             ],
         },
     },
