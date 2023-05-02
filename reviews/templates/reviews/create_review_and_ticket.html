@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
-<h1>Ecrire un ticket et une critique</h1>
+<div class="container">
+  <h1>Ecrire un ticket et une critique</h1>
 
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ ticket_form.as_p }}
-  {{ review_form.as_p }}
-  <input type="submit" value="Publier">
-</form>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Ticket</h2>
+    {{ ticket_form|crispy }}
+    <h2>Critique</h2>
+    {{ review_form|crispy }}
+    <input type="submit" value="Publier">
+  </form>
+</div>
 {% endblock content %}

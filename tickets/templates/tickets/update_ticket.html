@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
-<h2>Modifier le ticket</h2>
-<form method="post" enctype="multipart/form-data">
-    {{ edit_form.as_p }}
-    {% csrf_token %}
-    <button type="submit" >Sauvegarder</button>
-</form>
-<hr>
-<h3>Supprimer le ticket ?</h3>
-<form method="post">
-    {{ delete_form }}
-    {% csrf_token %}
-    <button type="submit" >Supprimer</button>
-</form>
+<div class="container">
+    <h2>Modifier le ticket</h2>
+    <form method="post" enctype="multipart/form-data">
+        {{ edit_form|crispy }}
+        {% csrf_token %}
+        <button type="submit" >Sauvegarder</button>
+    </form>
+    <hr>
+    <h3>Supprimer le ticket ?</h3>
+    <form method="post">
+        {{ delete_form|crispy }}
+        {% csrf_token %}
+        <button type="submit" >Supprimer</button>
+    </form>
+</div>
 {% endblock content %}
