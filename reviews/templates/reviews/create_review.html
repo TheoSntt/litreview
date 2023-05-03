@@ -2,11 +2,11 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <h1>Ecrire une critique</h1>
-<div class="container">
-  <form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="submit" value="Envoyer">
-  </form>
-</div>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input type="submit" value="Envoyer">
+</form>
+
 {% endblock content %}

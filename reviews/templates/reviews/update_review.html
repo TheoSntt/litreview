@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
-    <h2>Modifier la critique</h2>
-    <form method="post">
-        {{ edit_form|crispy }}
-        {% csrf_token %}
-        <button type="submit" >Sauvegarder</button>
-    </form>
-    <hr>
-    <h3>Supprimer la critique ?</h3>
-    <form method="post">
-        {{ delete_form|crispy }}
-        {% csrf_token %}
-        <button type="submit" >Supprimer</button>
-    </form>
-</div>
+
+<h2>Modifier la critique</h2>
+<form method="post">
+    {{ edit_form|crispy }}
+    {% csrf_token %}
+    <button type="submit" >Sauvegarder</button>
+</form>
+<hr>
+<h3>Supprimer la critique ?</h3>
+<form method="post">
+    {{ delete_form|crispy }}
+    {% csrf_token %}
+    <button type="submit" >Supprimer</button>
+</form>
+
 {% endblock content %}

@@ -1,38 +1,23 @@
 {% load feed_extras %}
-{% comment %} <div class="ticket">
-        <h4>Ticket : {{ ticket.title }}</h4>
+
+<div class="card text-center my-5">
+    <div class="card-header">
+        Ticket de {{ ticket.user }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ ticket.title }}</h5>
+        <p class="card-text">{{ ticket.description }}</p>
         {% if ticket.user == logged_user %}
-            - <a href="{% url 'update-ticket' instance.id %}">[modifier]</a>
+            <a href="{% url 'update-ticket' instance.id %}" class="btn btn-primary">Modifier</a>
         {% endif %}
         {% if not ticket.has_been_reviewed %}
-            - <a href="{% url 'create-review' instance.id %}">[Proposer une critique]</a><br>
+            <a href="{% url 'create-review' instance.id %}" class="btn btn-primary">Proposer une critique</a><br>
         {% endif %}
         {% if ticket.image %}
             <img src={{ ticket.image.url }}>
         {% endif %}
-        <p><strong>Publié par {{ ticket.user }}</strong></p>
-        <p>{{ ticket.time_created|get_posted_at_display }}</p>
-</div> {% endcomment %}
-<div class="container">
-    <div class="card text-center my-5">
-        <div class="card-header">
-            Ticket de {{ ticket.user }}
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">{{ ticket.title }}</h5>
-            <p class="card-text">{{ ticket.description }}</p>
-            {% if ticket.user == logged_user %}
-                <a href="{% url 'update-ticket' instance.id %}" class="btn btn-primary">Modifier</a>
-            {% endif %}
-            {% if not ticket.has_been_reviewed %}
-                <a href="{% url 'create-review' instance.id %}" class="btn btn-primary">Proposer une critique</a><br>
-            {% endif %}
-            {% if ticket.image %}
-                <img src={{ ticket.image.url }}>
-            {% endif %}
-        </div>
-        <div class="card-footer text-muted">
-            {{ ticket.time_created|get_posted_at_display }}
-        </div>
+    </div>
+    <div class="card-footer text-muted">
+        {{ ticket.time_created|get_posted_at_display }}
     </div>
 </div>
