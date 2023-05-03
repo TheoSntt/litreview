@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load feed_extras %}
 {% block content %}
-<ul>
+
+{% include 'feed/partials/creation_buttons.html' %}
+
 {% for instance in page_obj %}
 
 {% comment %} <li>
@@ -30,7 +32,6 @@
     {% endif %}
 
 {% endfor %}
-</ul>
 
 {% include 'feed/partials/page_navigator.html' %}
 
