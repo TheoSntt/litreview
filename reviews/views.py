@@ -59,7 +59,7 @@ def update_review(request, review_id):
         
     context = {
         'edit_form': edit_form,
-        'delete_form': delete_form,
+        'delete_form': delete_form
         }     
 
     return render(request,'reviews/update_review.html', context=context)

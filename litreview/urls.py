@@ -57,8 +57,6 @@ urlpatterns = [
 
     path('reviews/<int:review_id>/update/', reviews.views.update_review, name='update-review'),
     path('reviews/create/', reviews.views.create_review_and_ticket, name='create-review-ticket'),
-
-    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 
 if settings.DEBUG:
