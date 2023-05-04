@@ -2,12 +2,13 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<h1>Créer un nouveau ticket</h1>
+<h1 class="my-4">Créer un nouveau ticket</h1>
 
 <form method="post"  enctype="multipart/form-data">
   {% csrf_token %}
   {{ form|crispy }}
-  <input type="submit" value="Envoyer">
+  <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
+  <input type="submit" value="Créer le ticket" class="btn btn-primary my-4">
 </form>
 
 {% endblock content %}
