@@ -2,18 +2,24 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<h2>Modifier la critique</h2>
+
+<h1 class="my-4">Modifier la critique</h1>
+
 <form method="post">
     {{ edit_form|crispy }}
     {% csrf_token %}
-    <button type="submit" >Sauvegarder</button>
+    <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
+    <input type="submit" value="Modifier" class="btn btn-primary my-4">
 </form>
 <hr>
-<h3>Supprimer la critique ?</h3>
+
+<h1 class="my-4">Supprimer la critique ?</h1>
+
 <form method="post">
     {{ delete_form|crispy }}
     {% csrf_token %}
-    <button type="submit" >Supprimer</button>
+    <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
+  <input type="submit" value="Supprimer" class="btn btn-primary my-4">
 </form>
 
 {% endblock content %}
