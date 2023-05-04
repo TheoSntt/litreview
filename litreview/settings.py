@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'reviews',
     'tickets',
     'crispy_forms',
-    "crispy_bootstrap4"
+    "crispy_bootstrap4",
+    'star_ratings',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
