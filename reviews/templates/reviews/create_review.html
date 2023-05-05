@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
 {% block content %}
 
 <h1 class="my-4">Ecrire une critique</h1>
 
 <form method="post">
   {% csrf_token %}
-  {{ form|crispy }}
+  {% comment %} {{ form|crispy }} {% endcomment %}
+  {% comment %} {% crispy form %} {% endcomment %}
+  {% bootstrap_form form %}
   <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
   <input type="submit" value="Publier la critique" class="btn btn-primary my-4">
 </form>
