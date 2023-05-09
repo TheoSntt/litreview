@@ -1,3 +1,4 @@
+{% comment %} 
 <span>
     {% if page_obj.has_previous %}
         <a href="?page=1">&laquo; première</a>
@@ -13,3 +14,20 @@
     <a href="?page={{ page_obj.paginator.num_pages }}">dernière &raquo;</a>
 {% endif %}
 </span>
+{% endcomment %}
+
+<div class="d-flex justify-content-center align-items-center">
+    {% if page_obj.has_previous %}
+        <a href="?page=1" class="btn btn-primary me-2">&laquo; première</a>
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary me-4">précédente</a>
+    {% endif %}
+
+    <span class="text-center">
+        Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
+    </span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary ms-4">suivante</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-primary ms-2">dernière &raquo;</a>
+    {% endif %}
+</div>
