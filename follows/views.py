@@ -1,21 +1,36 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from follows.forms import FollowUsersForm
+from follows.forms import FollowUserForm
 from django.contrib.auth import get_user_model
 from follows.models import UserFollows
 
 @login_required
 def follow_users(request):
     User = get_user_model()
+    # This part handles the creation of the follow relation, it case of a POST request
+    # if request.method == 'POST':
+    #     user_id = request.POST.get('user_id')
+    #     if user_id:
+    #         user = get_object_or_404(User, id=user_id)
+    #         Follows = UserFollows.objects.create(user=request.user, followed_user=user)
+    #         return redirect('follow-users')
+    
     if request.method == 'POST':
-        user_id = request.POST.get('user_id')
-        if user_id:
-            user = get_object_or_404(User, id=user_id)
-            Follows = UserFollows.objects.create(user=request.user, followed_user=user)
+        form = FollowUserForm(request.POST)
+        if form.is_valid():
+
+            following = form.save(commit=False)
+            following.user = request.user
+            following.save()
             return redirect('follow-users')
+    else:
+        form = FollowUserForm()
+
+    # This is for other purpuses
     followed_users = request.user.follows.all()
     users_to_follow = User.objects.exclude(id=request.user.id).exclude(id__in=followed_users)
     context = {
+        'form': form,
         'users_to_follow' : users_to_follow,
         'followed_users': followed_users,
         'followers': request.user.followers.all()

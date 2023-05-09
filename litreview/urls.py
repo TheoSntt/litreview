@@ -57,6 +57,8 @@ urlpatterns = [
 
     path('reviews/<int:review_id>/update/', reviews.views.update_review, name='update-review'),
     path('reviews/create/', reviews.views.create_review_and_ticket, name='create-review-ticket'),
+
+    path("select2/", include("django_select2.urls")),
 ]
 
 if settings.DEBUG:

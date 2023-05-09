@@ -1,3 +1,4 @@
+{% comment %}
 {% extends 'base.html' %}
 {% block content %}
 <h1>Suivre un utilisateur</h1>
@@ -31,3 +32,23 @@
 </ul>
 
 {% endblock content %}
+{% endcomment %}
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Book</title>
+    {{ form.media.css }}
+</head>
+<body>
+
+    <h1>Create a new Book</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit">
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{ form.media.js }}
+</body>
+</html>
