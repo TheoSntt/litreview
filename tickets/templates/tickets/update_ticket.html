@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
+
+{% block title %}Modifier un ticket{% endblock title %}
+
 {% block content %}
 
 <h1 class="my-4">Modifier le ticket</h1>
 
 <form method="post" enctype="multipart/form-data">
-    {{ edit_form|crispy }}
+    {% bootstrap_form edit_form %}
     {% csrf_token %}
     <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
     <button type="submit" class="btn btn-primary my-4">Modifier</button>
@@ -16,7 +19,7 @@
 <h1 class="my-4">Supprimer le ticket ?</h1>
 
 <form method="post">
-    {{ delete_form|crispy }}
+    {% bootstrap_form delete_form %}
     {% csrf_token %}
     <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
     <button type="submit" class="btn btn-primary my-4">Supprimer</button>
