@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
+
+{% block title %}Unfollow un utilisateur{% endblock title %}
+
 {% block content %}
 
-<h1>Unfollow la personne ?</h1>
+<h1 class="my-4">Unfollow la personne ?</h1>
 
 <p>Etes-vous sûr de vouloir unfollow cet utilisateur : {{ user.username }} ?</p>
 
 <form action="" method="post">
     {% csrf_token %}
-    <input type="submit" value="Unfollow">
+    <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
+    <input type="submit" class="btn btn-primary my-4" value="Unfollow">
 </form>
 {% endblock content %}
