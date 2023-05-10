@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
+
+{% block title %}Inscription{% endblock title %}
+
 {% block content %}
 <div class="container">
-    <h2>Inscription</h2>
+    <h1 class="my-4">Inscription</h1>
     {% if form.errors %}
         {{ form.errors }}
     {% endif %}
     <form method="post">
-        {{ form|crispy }}
+        {% bootstrap_form form %}
         {% csrf_token %}
-        <button type="submit" >S’inscrire</button>
+        <button type="submit" class="btn btn-primary my-4">S'inscrire</button>
     </form>
 </div>
 {% endblock content %}
