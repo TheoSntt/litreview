@@ -7,6 +7,9 @@
     <div class="card-body">
         <h5 class="card-title">{{ review.headline }}</h5>
         <p class="card-text">{{ review.body }}</p>
+
+        {% include 'reviews/partials/star_widget.html' with rating=review.rating %}
+
         <p class="card-text">Note de {{ review.rating }}</p>
         {% include 'tickets/partials/embeded_ticket_snippet.html' with ticket=review.ticket %}
         {% if review.user == logged_user %}

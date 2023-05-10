@@ -10,7 +10,8 @@ class ReviewForm(forms.ModelForm):
     fields = ['headline', 'rating', 'body']
     widgets = {
       'rating': forms.RadioSelect(choices=[(0, '0'), (1, '1'), (2, '2'), (3, '3'), (4, '4'), (5, '5')],
-                                  attrs={"class":"tropclassecetteclass"}),
+                                  # attrs={"class":"inLineRadioContainer"}),
+                                  attrs={"style":"display:flex;flex-direction:row;gap:30px;justify-content:space-around;"}),
       'body': forms.Textarea(attrs={'rows': 6}),
       }
     labels={
