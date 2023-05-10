@@ -3,11 +3,7 @@
 
 {% block title %}Suivre des utilisateurs{% endblock title %}
 
-{% block extra_head %}
-
-{{ form.media.css }}
-
-{% endblock extra_head %}
+{% block extra_head %}{{ form.media.css }}{% endblock extra_head %}
 
 {% block content %}
 
@@ -26,13 +22,6 @@
     {% for followed_user in followed_users %}
       <tr>
         <td>{{ followed_user.username }}</td>
-        {% comment %}
-        <td class="col-2 text-center">
-          <form action="{% url 'unfollow-user' followed_user.id %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Unfollow</button>
-          </form>
-          {% endcomment %}
         <td class="col-2 text-center">
           <a href="{% url 'unfollow-user' followed_user.id %}">Unfollow</a>
         </td>
@@ -56,8 +45,6 @@
 {% endblock content %}
 
 {% block extra_scripts %}
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {{ form.media.js }}
-
 {% endblock extra_scripts %}

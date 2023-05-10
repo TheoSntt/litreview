@@ -9,8 +9,6 @@
 
 <form method="post">
   {% csrf_token %}
-  {% comment %} {{ form|crispy }} {% endcomment %}
-  {% comment %} {% crispy form %} {% endcomment %}
   {% bootstrap_form form %}
   <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
   <input type="submit" value="Publier la critique" class="btn btn-primary my-4">

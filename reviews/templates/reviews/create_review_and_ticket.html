@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
+
+{% block title %}Publier un ticket et sa critique{% endblock title %}
+
 {% block content %}
 
 <h1 class="my-4">Ecrire un ticket et une critique</h1>
@@ -7,10 +10,10 @@
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <h2 class="my-4">Ticket</h2>
-  {{ ticket_form|crispy }}
+  {% bootstrap_form ticket_form %}
   <hr>
   <h2 class="my-4">Critique</h2>
-  {{ review_form|crispy }}
+  {% bootstrap_form review_form %}
   <a class="btn btn-primary my-4" href="{% url 'self-feed' %}">Retour</a>
     <button type="submit" class="btn btn-primary my-4">Publier</button>
 </form>
