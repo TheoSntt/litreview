@@ -29,7 +29,7 @@ class Ticket(models.Model):
     # image = models.ForeignKey(Photo, null=True, on_delete=models.SET_NULL, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
-    IMAGE_MAX_SIZE = (100, 100)
+    IMAGE_MAX_SIZE = (200, 200)
 
     def resize_image(self):
         if self.image:

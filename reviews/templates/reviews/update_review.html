@@ -5,6 +5,11 @@
 
 {% block content %}
 
+<h1 class="my-4">Vous modifiez votre critique en réponse au ticket suivant :</h1>
+
+{% include 'tickets/partials/embeded_ticket_snippet.html' with ticket=ticket %}
+
+<hr>
 
 <h1 class="my-4">Modifier la critique</h1>
 

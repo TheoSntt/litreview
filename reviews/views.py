@@ -26,9 +26,13 @@ def create_review(request, ticket_id):
             # nous pouvons fournir les arguments du motif url comme arguments à la fonction de redirection
             return redirect('feed')
  
+    context = {
+        'form': form,
+        'ticket': ticket
+        }   
     return render(request,
                   'reviews/create_review.html',
-                  {'form': form})
+                  context=context)
 
 
 @login_required
@@ -59,7 +63,8 @@ def update_review(request, review_id):
         
     context = {
         'edit_form': edit_form,
-        'delete_form': delete_form
+        'delete_form': delete_form,
+        'ticket': review.ticket
         }     
 
     return render(request,'reviews/update_review.html', context=context)
@@ -84,5 +89,6 @@ def create_review_and_ticket(request):
     context = {
         'review_form': review_form,
         'ticket_form': ticket_form,
+        'ticket': ticket
     }
     return render(request, 'reviews/create_review_and_ticket.html', context=context)
