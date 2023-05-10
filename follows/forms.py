@@ -17,4 +17,11 @@ class FollowUserForm(forms.ModelForm):
         widgets = {
             "followed_user": UsersWidget,
         }
+        labels={
+            "followed_user": 'Nom d\'utilisateur',
+        }
+    
+    def __init__(self, current_user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['followed_user'].queryset = User.objects.exclude(id=current_user.id).exclude(id__in=current_user.follows.all())
 

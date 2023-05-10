@@ -16,7 +16,7 @@ def follow_users(request):
     #         return redirect('follow-users')
     
     if request.method == 'POST':
-        form = FollowUserForm(request.POST)
+        form = FollowUserForm(request.user, request.POST)
         if form.is_valid():
 
             following = form.save(commit=False)
@@ -24,7 +24,7 @@ def follow_users(request):
             following.save()
             return redirect('follow-users')
     else:
-        form = FollowUserForm()
+        form = FollowUserForm(request.user)
 
     # This is for other purpuses
     followed_users = request.user.follows.all()
