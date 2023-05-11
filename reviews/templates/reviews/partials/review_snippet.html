@@ -2,7 +2,7 @@
 
 <div class="card text-center my-5">
     <div class="card-header">
-        Critique de {{ review.user }}
+        Critique de {% get_poster_display review.user %}
     </div>
     <div class="card-body">
         <h5 class="card-title">{{ review.headline }}</h5>
@@ -13,7 +13,7 @@
         {% include 'tickets/partials/embeded_ticket_snippet.html' with ticket=review.ticket %}
         
         {% if review.user == logged_user %}
-            <a href="{% url 'update-review' review.id %}" class="btn btn-primary">Modifier</a></h4>
+            <a href="{% url 'update-review' review.id %}" class="btn btn-primary">Modifier votre critique</a></h4>
         {% endif %}
     </div>
     <div class="card-footer text-muted">
