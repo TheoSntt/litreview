@@ -89,6 +89,5 @@ def create_review_and_ticket(request):
     context = {
         'review_form': review_form,
         'ticket_form': ticket_form,
-        'ticket': ticket
     }
     return render(request, 'reviews/create_review_and_ticket.html', context=context)

@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'follows',
     'reviews',
     'tickets',
-    'crispy_forms',
-    "crispy_bootstrap5",
+    # 'crispy_forms',
+    # "crispy_bootstrap5",
     "django_bootstrap5",
     'django_select2',
 ]
