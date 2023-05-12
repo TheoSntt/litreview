@@ -18,7 +18,7 @@
         <p class="card-text">{{ ticket.description }}</p>
         {% if ticket.image %}
         <div class="text-center">
-            <img src={{ ticket.image.url }}>
+            <img src={{ ticket.image.url }} alt="illustration pour {{ ticket.title }}">
         </div>
         {% endif %}
     </div>
