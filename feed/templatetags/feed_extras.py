@@ -27,4 +27,4 @@ def get_posted_at_display(posted_at):
 def get_poster_display(context, user):
     if user == context['user']:
         return 'vous'
-    return user.username
+    return user.username.capitalize()
