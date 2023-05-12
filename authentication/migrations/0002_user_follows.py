@@ -15,6 +15,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='follows',
-            field=models.ManyToManyField(through='follows.UserFollows', to=settings.AUTH_USER_MODEL, verbose_name='suit'),
+            field=models.ManyToManyField(through='follows.UserFollows',
+                                         to=settings.AUTH_USER_MODEL,
+                                         verbose_name='suit'),
         ),
     ]

@@ -17,11 +17,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='review',
             name='ticket',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='review', to='tickets.ticket'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='review',
+                                    to='tickets.ticket'),
         ),
         migrations.AlterField(
             model_name='review',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='reviews',
+                                    to=settings.AUTH_USER_MODEL),
         ),
     ]

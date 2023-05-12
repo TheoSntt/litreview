@@ -15,6 +15,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='user',
             name='follows',
-            field=models.ManyToManyField(related_name='followers', through='follows.UserFollows', to=settings.AUTH_USER_MODEL, verbose_name='suit'),
+            field=models.ManyToManyField(related_name='followers',
+                                         through='follows.UserFollows',
+                                         to=settings.AUTH_USER_MODEL,
+                                         verbose_name='suit'),
         ),
     ]

@@ -1,20 +1,13 @@
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from follows.forms import FollowUserForm
 from django.contrib.auth import get_user_model
-from follows.models import UserFollows
+
 
 @login_required
 def follow_users(request):
     User = get_user_model()
-    # This part handles the creation of the follow relation, it case of a POST request
-    # if request.method == 'POST':
-    #     user_id = request.POST.get('user_id')
-    #     if user_id:
-    #         user = get_object_or_404(User, id=user_id)
-    #         Follows = UserFollows.objects.create(user=request.user, followed_user=user)
-    #         return redirect('follow-users')
-    
+
     if request.method == 'POST':
         form = FollowUserForm(request.user, request.POST)
         if form.is_valid():
@@ -26,12 +19,11 @@ def follow_users(request):
     else:
         form = FollowUserForm(request.user)
 
-    # This is for other purpuses
     followed_users = request.user.follows.all()
     users_to_follow = User.objects.exclude(id=request.user.id).exclude(id__in=followed_users)
     context = {
         'form': form,
-        'users_to_follow' : users_to_follow,
+        'users_to_follow': users_to_follow,
         'followed_users': followed_users,
         'followers': request.user.followers.all()
     }
@@ -46,6 +38,4 @@ def unfollow_user(request, id):
         request.user.follows.remove(user)
         return redirect('follow-users')
 
-    return render(request,
-                    'follows/unfollow_user.html',
-                    {'user': user})
+    return render(request, 'follows/unfollow_user.html', {'user': user})

@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from tickets.models import Ticket
 
+
 class Review(models.Model):
     ticket = models.ForeignKey(to=Ticket, on_delete=models.CASCADE, related_name='review')
     rating = models.PositiveSmallIntegerField(
