@@ -39,6 +39,24 @@ python manage.py runserver
 ```
 5. L'application est prête à être utilisée. Son fonctionnement correspond aux documents de conception fournis.
  
+6. Dans la base de donnée communiquée, 4 comptes de démonstrations ont été créés avec quelques publications. Les noms d'utilisateurs sont les suivants :
+```		
+demoUser
+```
+```		
+pierre_5
+```
+```		
+françoise
+```
+```		
+john1234
+```
+Le mot de passe est le même pour tous ces comptes :
+```		
+DummyUser2546
+```
+Pour avoir une bonne idée du fonctionnement de l'application, la connexion au compte demoUser est recommandée.
  
 BONUS : Si vous souhaitez tester vous même la conformité à la PEP8, vous pouvez installer et exécuter flake8, à l'aide des commandes suivantes :
 ```		
