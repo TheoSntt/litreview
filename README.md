@@ -4,7 +4,7 @@
 
 ## Description du projet
 
-Ce projet est le site le plus abouti que j'ai développé à l'aide de Django. Il s'agit d'un réseau social de critiques littéraires où les utilisateurs peuvent se suivrent mutuellement, et poster des demandes d'avis sur des oeuvres littéraires, et des critiques d'oeuvre en réponse à ces demandes d'avis. Le développement de cette application m'a permis de mettre en oeuvre et d'étendre ma connaissance du framework Django et de sa logique. Par ailleurs, le style de l'application a été fait à l'aide de Bootstrap5, une bonne occasion pour moi de me familiariser avec.
+Ce projet est le site le plus abouti que j'ai développé à l'aide de Django. Il s'agit d'un réseau social de critiques littéraires où les utilisateurs peuvent se suivre mutuellement, et poster des demandes d'avis sur des oeuvres littéraires, et des critiques d'oeuvre en réponse à ces demandes d'avis. Le développement de cette application m'a permis de mettre en oeuvre et d'étendre ma connaissance du framework Django et de sa logique. Par ailleurs, le style de l'application a été fait à l'aide de Bootstrap5, une bonne occasion pour moi de me familiariser avec.
 Afin de la rendre plus facilement testable, le repository contient la base de données, la Secret Key Django, ainsi que des informations de connexions. Cette configuration n'est donc pas viable pour un site en production.
 
 ## Mise en place et exécution en local de l'application
